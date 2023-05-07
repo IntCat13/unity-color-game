@@ -5,14 +5,18 @@ namespace _ColorGame.Scripts.GamePlay
 {
     public class Button : MonoBehaviour
     {
+        [Header("Button UI")]
         public ButtonUI UI;
-        [SerializeField] private IButtonState[] _buttonStates;
-        private IButtonState _currentState;
+        [Space]
         
+        [Header("State Machine Configuration")]
+        [SerializeField] private ButtonStateMachine _stateMachine;
+        [SerializeField] private ButtonStatesConfig _statesConfig;
+
         void Start()
         {
-            // Set up default state
-            _currentState = new NullState();
+            // Initialize state machine
+            _stateMachine.Initialize(_statesConfig);
         }
 
         private void OnClick()

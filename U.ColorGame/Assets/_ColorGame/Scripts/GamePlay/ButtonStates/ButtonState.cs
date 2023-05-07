@@ -4,9 +4,10 @@ using UnityEngine;
 
 namespace _ColorGame.Scripts.GamePlay.ButtonStates
 {
-    public class NullState : IButtonState
+    [CreateAssetMenu(fileName = "Button State", menuName = "Button States/New Button State")]
+    public class ButtonState : ScriptableObject, IButtonState
     {
-        private Color _stateColor = Color.gray;
+        [SerializeField]private Color _stateColor = Color.gray;
     
         // Set button color to gray
         public void OnEnter(Button button)
