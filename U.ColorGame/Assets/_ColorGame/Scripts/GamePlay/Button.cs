@@ -10,18 +10,19 @@ namespace _ColorGame.Scripts.GamePlay
         [Space]
         
         [Header("State Machine Configuration")]
-        [SerializeField] private ButtonStateMachine _stateMachine;
+        private ButtonStateMachine _stateMachine = new ButtonStateMachine();
         [SerializeField] private ButtonStatesConfig _statesConfig;
 
         void Start()
         {
             // Initialize state machine
-            _stateMachine.Initialize(_statesConfig);
+            _stateMachine.Initialize(_statesConfig, this);
         }
 
         private void OnClick()
         {
             // Action after button click here
+            _stateMachine.SetState(_statesConfig.BlueState, this);
         }
     }
 }

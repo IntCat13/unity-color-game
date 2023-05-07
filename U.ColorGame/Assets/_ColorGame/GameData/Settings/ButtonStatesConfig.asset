@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a9ade73b371d09742ad98803f9a9fbd9, type: 3}
+  m_Name: ButtonStatesConfig
+  m_EditorClassIdentifier: 
+  NullState: {fileID: 11400000, guid: c87e765abb1b23941ac2e9784026d03c, type: 2}
+  RedState: {fileID: 11400000, guid: 4060c808238de9745b3c2df9424098a3, type: 2}
+  GreenState: {fileID: 11400000, guid: 7c69575dab690984d98ba719c43daba0, type: 2}
+  BlueState: {fileID: 11400000, guid: c2016de34b42c734d9ccaf2d5ee96f37, type: 2}
+  YellowState: {fileID: 11400000, guid: e96c6ab295bb62d478d245ae60c711b5, type: 2}
+  OrangeState: {fileID: 11400000, guid: 7fd3be10fc66e094294e53f17eeb12c5, type: 2}
+  PurpleState: {fileID: 11400000, guid: 7887eb144284e6f488da4c5802c34907, type: 2}
+  CyanState: {fileID: 11400000, guid: 9d0445e1da077ed4daaffdc4f26b487c, type: 2}
+  PinkState: {fileID: 11400000, guid: 1309572221bf1ca409491d32390fbcaf, type: 2}
+  BrownState: {fileID: 11400000, guid: c71dea103d51c0544a039b03d651be8a, type: 2}
+  WhiteState: {fileID: 11400000, guid: fd36685f82f98ec47b9d7606018ba565, type: 2}
+  BlackState: {fileID: 11400000, guid: 4668c6e24708823429329883e8f3496c, type: 2}

@@ -20,6 +20,6 @@ namespace _ColorGame.Scripts.GamePlay.ButtonStates
         public ButtonState BrownState;
         public ButtonState WhiteState;
         public ButtonState BlackState;
-        public int NumberOfStates = 12;
+        private int NumberOfStates = 12;
     }
 }
