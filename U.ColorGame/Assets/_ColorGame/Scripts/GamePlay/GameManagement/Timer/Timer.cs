@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using _ColorGame.Scripts.Additional.DebugTools;
 using UnityEngine;
 
 namespace _ColorGame.Scripts.GamePlay.GameManagement.Timer
@@ -18,6 +19,9 @@ namespace _ColorGame.Scripts.GamePlay.GameManagement.Timer
         public bool IsTimerActive { get; private set; }
         public float TimeNormalized { get; private set; }
         private float _timer;
+        
+        [Header("Debug info")]
+        [SerializeField] private Logs _logger;
 
         private void FixedUpdate()
         {
@@ -29,6 +33,7 @@ namespace _ColorGame.Scripts.GamePlay.GameManagement.Timer
                 {
                     IsTimerActive = false;
                     OnTimerEnd?.Invoke();
+                    _logger.Log("Timer is end", this);
                 }
             }
         }
