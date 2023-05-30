@@ -23,7 +23,7 @@ namespace _ColorGame.Scripts.Additional.DebugTools
             if (_isDebugMode)
                 return;
             
-            Debug.Log($"<color={_logColor}>{_logPrefix}: {message}", sender);
+            Debug.Log($"<color={_hexColor}>{_logPrefix}: {message}</color>", sender);
         }
     }
 }

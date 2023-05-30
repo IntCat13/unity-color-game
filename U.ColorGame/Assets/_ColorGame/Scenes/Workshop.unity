@@ -346,7 +346,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 373d028b68c25bb4da6d97f2db47c35a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _timeValue: 100
+  _timeValue: 5
   _logger: {fileID: 1762978113}
 --- !u!4 &779119724
 Transform:
@@ -373,7 +373,7 @@ GameObject:
   m_Component:
   - component: {fileID: 875635774}
   m_Layer: 0
-  m_Name: Manager
+  m_Name: Managers
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
