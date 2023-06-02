@@ -6,7 +6,7 @@ namespace _ColorGame.Scripts.GamePlay.GameManagement.Timer
     public class TimerUI : MonoBehaviour
     {
         [Header("Dependencies")]
-        [SerializeField] private Timer _timer;
+        [SerializeField] private GameTimer _timer;
         [SerializeField] private Image _progressBar;
 
         private void FixedUpdate()

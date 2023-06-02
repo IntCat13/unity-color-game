@@ -1,6 +1,4 @@
-using _ColorGame.Scripts.GamePlay.ButtonStates;
-
-namespace _ColorGame.Scripts.GamePlay.ButtonStates
+namespace _ColorGame.Scripts.GamePlay.Buttons.ButtonStates
 {
     public static class StatesComparer
     {

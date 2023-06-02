@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace _ColorGame.Scripts.GamePlay
+namespace _ColorGame.Scripts.GamePlay.Buttons
 {
     public class ButtonUI : MonoBehaviour
     {

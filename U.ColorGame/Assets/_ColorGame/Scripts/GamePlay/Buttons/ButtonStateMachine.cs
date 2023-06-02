@@ -1,25 +1,22 @@
-using System.Collections;
-using System.Collections.Generic;
-using _ColorGame.Scripts.GamePlay.ButtonStates;
-using UnityEngine;
+using _ColorGame.Scripts.GamePlay.Buttons.ButtonStates;
 
-namespace _ColorGame.Scripts.GamePlay
+namespace _ColorGame.Scripts.GamePlay.Buttons
 {
     // This class is a state machine for the button
     public class ButtonStateMachine
     {
         // Set up default state
-        public IButtonState GetState() => _currentState;
-        private IButtonState _currentState;
+        public ButtonState GetState() => _currentState;
+        private ButtonState _currentState;
         private ButtonStatesConfig _statesConfig;
         
-        public void SetState(IButtonState state, Button button)
+        public void SetState(ButtonState state, GameButton button)
         {
             _currentState = state;
             _currentState.OnEnter(button);
         }
         
-        public void Initialize(ButtonStatesConfig statesConfig, Button button)
+        public void Initialize(ButtonStatesConfig statesConfig, GameButton button)
         {
             _statesConfig = statesConfig;
             _currentState = _statesConfig.NullState;

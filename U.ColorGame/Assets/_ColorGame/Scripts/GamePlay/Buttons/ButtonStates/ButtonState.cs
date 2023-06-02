@@ -1,8 +1,6 @@
-using _ColorGame.Scripts.GamePlay;
-using _ColorGame.Scripts.GamePlay.ButtonStates;
 using UnityEngine;
 
-namespace _ColorGame.Scripts.GamePlay.ButtonStates
+namespace _ColorGame.Scripts.GamePlay.Buttons.ButtonStates
 {
     [CreateAssetMenu(fileName = "Button State", menuName = "Button States/New Button State")]
     public class ButtonState : ScriptableObject, IButtonState
@@ -10,7 +8,7 @@ namespace _ColorGame.Scripts.GamePlay.ButtonStates
         [SerializeField]private Color _stateColor = Color.gray;
     
         // Set button color to gray
-        public void OnEnter(Button button)
+        public void OnEnter(GameButton button)
         {
             button.UI.SetColor(_stateColor);
         }

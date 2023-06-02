@@ -9,7 +9,7 @@ namespace _ColorGame.Scripts.GamePlay.GameManagement.Timer
 // Class that manage time
 // it's count time in seconds and write in in normalized form from 0 to 1
 // when timer is ends it's call event and reset it's value
-    public class Timer : MonoBehaviour
+    public class GameTimer : MonoBehaviour
     {
         [Header("Timer events")] public Action OnTimerEnd;
 
@@ -18,7 +18,10 @@ namespace _ColorGame.Scripts.GamePlay.GameManagement.Timer
 
         public bool IsTimerActive { get; private set; }
         public float TimeNormalized { get; private set; }
+        
         private float _timer;
+        private float _timeScaler;
+        private float _minTime;
         
         [Header("Debug info")]
         [SerializeField] private Logs _logger;
@@ -38,6 +41,14 @@ namespace _ColorGame.Scripts.GamePlay.GameManagement.Timer
             }
         }
 
+        public void Initialize(GameConfig config)
+        {
+            _timeValue = config.StartGameTime;
+            _timeScaler = config.TimeScaler;
+            _minTime = config.MinTime;
+            ResetTimer();
+        }
+        
         public void StartTimer()
         {
             ResetTimer();
@@ -52,7 +63,14 @@ namespace _ColorGame.Scripts.GamePlay.GameManagement.Timer
 
         public void ResetTimer()
         {
+            ScaleTime();
             _timer = _timeValue;
+        }
+
+        private void ScaleTime()
+        {
+            if(_timeValue <= _minTime) return;
+            _timeValue -= _timeScaler;
         }
     }
 }

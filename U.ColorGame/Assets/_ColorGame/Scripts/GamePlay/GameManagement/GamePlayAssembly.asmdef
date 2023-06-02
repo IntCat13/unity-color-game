@@ -1,4 +1,4 @@
 {
 	"name": "GamePlayAssembly",
-	"references":[ "GUID:940d05fe6211be4408a3a7b5c5251405" ]
+	"references":[ "GUID:940d05fe6211be4408a3a7b5c5251405", "GUID:b3bb2110c2afd414ba2e9b0b045edbb6" ]
 }
