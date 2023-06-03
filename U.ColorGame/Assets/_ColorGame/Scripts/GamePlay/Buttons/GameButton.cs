@@ -18,12 +18,19 @@ namespace _ColorGame.Scripts.GamePlay.Buttons
 
         private void Awake()
         {
+            if(StatesConfig == null)
+                Debug.LogError("States config is null in awake");
+            
             // Initialize state machine
             StateMachine.Initialize(StatesConfig, this);
         }
 
         private void Start()
         {
+            if(StatesConfig == null)
+                Debug.LogError("States config is null in start");
+            
+            //StateMachine.Initialize(StatesConfig, this);
             _mixer.AddButton(this);
         }
 

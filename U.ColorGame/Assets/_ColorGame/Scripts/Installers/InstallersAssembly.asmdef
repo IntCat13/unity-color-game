@@ -1,0 +1,4 @@
+{
+	"name": "InstallersAssembly",
+	"references":[ "GUID:0d8beb7f090555447a6cf5ce9e54dbb4", "GUID:504dcab4d9c63e54cb05e6ee1b448016", "GUID:b3bb2110c2afd414ba2e9b0b045edbb6" ]
+}
