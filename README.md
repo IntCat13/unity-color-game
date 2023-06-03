@@ -6,3 +6,5 @@ Test game on the Unity Engine, the player has to press the button, signed by the
 - Buttons implemented as a state machine
 - Simple game timer
 - Custom logger
+- Game management system
+- Zenject DI container
