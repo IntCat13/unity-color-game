@@ -15,9 +15,12 @@ namespace _ColorGame.Scripts.GamePlay.Buttons
         
         [Inject] private ButtonsMixer _mixer;
         [Inject] private ButtonsController _controller;
+        
+        private Animator _animation;
 
         private void Awake()
         {
+            _animation = GetComponent<Animator>();
             if(StatesConfig == null)
                 Debug.LogError("States config is null in awake");
             
@@ -36,6 +39,7 @@ namespace _ColorGame.Scripts.GamePlay.Buttons
 
         public void OnClick()
         {
+            _animation.SetTrigger("Click");
             _controller.ClickAnyButton(StateMachine.GetState(), StatesConfig);
         }
         
