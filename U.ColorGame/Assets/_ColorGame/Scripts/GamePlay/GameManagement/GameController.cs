@@ -11,6 +11,7 @@ namespace _ColorGame.Scripts.GamePlay.GameManagement
         [Inject] private GameEvents _gameEvents;
         [Inject] private GameConfig _gameConfig;
         [Inject] private GameTimer _timer;
+        [Inject] private ScoreCounter _scoreCounter;
         
         [Inject] private ButtonsController _buttonsController;
 
@@ -21,6 +22,7 @@ namespace _ColorGame.Scripts.GamePlay.GameManagement
         }
         
         // Initialize game event and start game
+        // TODO: Move events initialization to separate class
         public void StartGame()
         {
             // Initialize timer
@@ -33,6 +35,7 @@ namespace _ColorGame.Scripts.GamePlay.GameManagement
             // Initialize game events
             _buttonsController.OnClickedRightButton += _timer.ResetTimer;
             _buttonsController.OnClickedRightButton += _timer.SetColor;
+            _buttonsController.OnClickedRightButton += _scoreCounter.AddScore;
             _gameEvents.GameStart();
             
             // Start timer

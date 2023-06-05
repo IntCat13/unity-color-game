@@ -3,6 +3,7 @@ using _ColorGame.Scripts.GamePlay.GameManagement;
 using UnityEngine;
 using Zenject;
 
+// This class is responsible for installing configuration bindings in the game
 [CreateAssetMenu(fileName = "ConfigInstaller", menuName = "Installers/ConfigInstaller")]
 public class ConfigInstaller : ScriptableObjectInstaller<ConfigInstaller>
 {
