@@ -1,10 +1,12 @@
 using _ColorGame.Scripts.GamePlay.Buttons.ButtonStates;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using Zenject;
 
 namespace _ColorGame.Scripts.GamePlay.Buttons
 {
-    public class GameButton : MonoBehaviour
+    // This class is responsible for storing game button logic
+    public class GameButton : MonoBehaviour, IPointerClickHandler
     {
         [Inject] public readonly ButtonStatesConfig StatesConfig;
         public readonly ButtonStateMachine StateMachine = new ButtonStateMachine();
@@ -18,26 +20,19 @@ namespace _ColorGame.Scripts.GamePlay.Buttons
         
         private Animator _animation;
 
+        // Initialize button
         private void Awake()
         {
             _animation = GetComponent<Animator>();
-            if(StatesConfig == null)
-                Debug.LogError("States config is null in awake");
-            
+
             // Initialize state machine
             StateMachine.Initialize(StatesConfig, this);
-        }
-
-        private void Start()
-        {
-            if(StatesConfig == null)
-                Debug.LogError("States config is null in start");
             
             //StateMachine.Initialize(StatesConfig, this);
             _mixer.AddButton(this);
         }
-
-        public void OnClick()
+        
+        public void OnPointerClick(PointerEventData pointerEventData)
         {
             _animation.SetTrigger("Click");
             _controller.ClickAnyButton(StateMachine.GetState(), StatesConfig);

@@ -30,7 +30,7 @@ namespace _ColorGame.Scripts.GamePlay.Buttons.ButtonStates
         
         public ButtonState GetRandomState()
         {
-            var randomState = Random.Range(0, NumberOfStates);
+            var randomState = Random.Range(1, NumberOfStates);
             switch (randomState)
             {
                 case 1:

@@ -11,12 +11,15 @@ namespace _ColorGame.Scripts.GamePlay.Buttons
         private ButtonState _expectedButtonState;
         [Inject] private ButtonsMixer _mixer;
 
+        public Color GetColor()
+            => _expectedButtonState.GetColor();
+
         public void ClickAnyButton(ButtonState state, IRandomButtonState random)
         {
             if (IsButtonIsExpected(state))
             {
-                OnClickedRightButton?.Invoke();
                 RandomizeNextButton(random);
+                OnClickedRightButton?.Invoke();
             }
         }
         
@@ -29,6 +32,12 @@ namespace _ColorGame.Scripts.GamePlay.Buttons
             {
                 _expectedButtonState = random.GetRandomState(_expectedButtonState);
             } while (_mixer.IsButtonStateNotExists(_expectedButtonState));
+        }
+
+        public void InitializeButtons()
+        {
+            _mixer.MixButtons();
+            RandomizeNextButton(_mixer.Random());
         }
     }
 }

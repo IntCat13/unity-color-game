@@ -16,6 +16,7 @@ namespace _ColorGame.Scripts.GamePlay.Buttons
             _currentState.OnEnter(button);
         }
         
+        // Initialize state machine
         public void Initialize(ButtonStatesConfig statesConfig, GameButton button)
         {
             _statesConfig = statesConfig;

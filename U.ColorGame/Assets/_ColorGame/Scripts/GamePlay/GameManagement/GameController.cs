@@ -5,6 +5,7 @@ using Zenject;
 
 namespace _ColorGame.Scripts.GamePlay.GameManagement
 {
+    // This class is responsible for game management
     public class GameController : MonoBehaviour
     {
         [Inject] private GameEvents _gameEvents;
@@ -13,13 +14,29 @@ namespace _ColorGame.Scripts.GamePlay.GameManagement
         
         [Inject] private ButtonsController _buttonsController;
 
+        // Temporary solution for starting game
+        private void Start()
+        {
+            StartGame();
+        }
+        
+        // Initialize game event and start game
         public void StartGame()
         {
+            // Initialize timer
             _timer.Initialize(_gameConfig);
             _timer.OnTimerEnd += EndGame;
+
+            // Initialize buttons
+            _buttonsController.InitializeButtons();
             
+            // Initialize game events
             _buttonsController.OnClickedRightButton += _timer.ResetTimer;
+            _buttonsController.OnClickedRightButton += _timer.SetColor;
             _gameEvents.GameStart();
+            
+            // Start timer
+            _timer.StartTimer();
         }
 
         public void EndGame()

@@ -2,7 +2,9 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using _ColorGame.Scripts.Additional.DebugTools;
+using _ColorGame.Scripts.GamePlay.Buttons;
 using UnityEngine;
+using Zenject;
 
 namespace _ColorGame.Scripts.GamePlay.GameManagement.Timer
 {
@@ -11,11 +13,14 @@ namespace _ColorGame.Scripts.GamePlay.GameManagement.Timer
 // when timer is ends it's call event and reset it's value
     public class GameTimer : MonoBehaviour
     {
-        [Header("Timer events")] public Action OnTimerEnd;
+        [Header("Timer events")] 
+        public Action OnTimerEnd;
+        public Action OnTimerChanged;
 
         [Space] [Header("Timer settings")] [SerializeField]
         private float _timeValue;
 
+        public Color CurrentColor { get; private set; }
         public bool IsTimerActive { get; private set; }
         public float TimeNormalized { get; private set; }
         
@@ -26,14 +31,18 @@ namespace _ColorGame.Scripts.GamePlay.GameManagement.Timer
         [Header("Debug info")]
         [SerializeField] private Logs _logger;
 
+        [Inject] private ButtonsController _buttonsController;
+
         private void FixedUpdate()
         {
+            // if timer is active then count time
             if (IsTimerActive)
             {
                 _timer -= Time.deltaTime;
                 TimeNormalized = _timer / _timeValue;
                 if (_timer <= 0)
                 {
+                    // if timer is end then call event and stop timer
                     IsTimerActive = false;
                     OnTimerEnd?.Invoke();
                     _logger.Log("Timer is end", this);
@@ -41,6 +50,16 @@ namespace _ColorGame.Scripts.GamePlay.GameManagement.Timer
             }
         }
 
+        // set color from buttons controller
+        public void SetColor()
+        {
+            CurrentColor = _buttonsController.GetColor();
+            // Call event
+            OnTimerChanged?.Invoke();
+        }
+
+        // Initialize timer
+        // Set values from configuration
         public void Initialize(GameConfig config)
         {
             _timeValue = config.StartGameTime;
@@ -49,8 +68,10 @@ namespace _ColorGame.Scripts.GamePlay.GameManagement.Timer
             ResetTimer();
         }
         
+        // Start timer
         public void StartTimer()
         {
+            SetColor();
             ResetTimer();
             IsTimerActive = true;
         }
@@ -67,6 +88,8 @@ namespace _ColorGame.Scripts.GamePlay.GameManagement.Timer
             _timer = _timeValue;
         }
 
+        // Scale time
+        // Change time value by time scaler
         private void ScaleTime()
         {
             if(_timeValue <= _minTime) return;

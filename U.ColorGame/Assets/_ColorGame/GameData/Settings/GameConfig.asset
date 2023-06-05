@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 34091e0b180cb5f4481c29d778df94d8, type: 3}
   m_Name: GameConfig
   m_EditorClassIdentifier: 
-  StartGameTime: 5
-  TimeScaler: 0.1
+  StartGameTime: 10
+  TimeScaler: 0.15
   MinTime: 1
